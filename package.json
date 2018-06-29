@@ -27,7 +27,8 @@
   "homepage": "https://github.com/jclulow/node-ansiterm",
   "dependencies": {
     "assert-plus": "1.0.0",
-    "jsprim": "1.4.0"
+    "jsprim": "1.4.0",
+    "safer-buffer": "2.1.2"
   },
   "devDependencies": {
     "faucet": "0.0.1",

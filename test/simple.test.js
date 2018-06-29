@@ -299,3 +299,33 @@ test('page movement', function (t) {
 		    expectSpecial(CSI + '6;3~', 'next', PRESS_ALT));
 	});
 });
+
+
+test('utf-8', function (t) {
+	t.test('2-byte characters', function (t2) {
+		t2.test('NKO LETTER RRA (U+07DA)', expectKeypress('ߚ', 'ߚ'));
+		t2.test('CYRILLIC CAPITAL LETTER NJE (U+040A)',
+		    expectKeypress('Њ', 'Њ'));
+		t2.test('ARABIC LETTER JEEM (U+062C)', expectKeypress('ج', 'ج'));
+	});
+
+	t.test('3-byte characters', function (t2) {
+		t2.test('FOR ALL (U+2200)', expectKeypress('∀', '∀'));
+		t2.test('SNOWMAN (U+2603)', expectKeypress('☃', '☃'));
+		t2.test('DEVANAGARI LETTER AA (U+0906)', expectKeypress('आ', 'आ'));
+		t2.test('GEORGIAN LETTER LAS (U+10DA)', expectKeypress('ლ', 'ლ'));
+	});
+
+	t.test('4-byte characters', function (t2) {
+		t2.test('LINEAR B SYLLABLE B044 KE (U+10010 )',
+		    expectKeypress('𐀐', '𐀐'));
+		t2.test('CUNEIFORM SIGN AB TIMES U PLUS U PLUS U (U+12014)',
+		    expectKeypress('𒀔', '𒀔'));
+		t2.test('DESERET CAPITAL LETTER KAY (U+10417)',
+		    expectKeypress('𐐗', '𐐗'));
+		t2.test('GOTHIC LETTER OTHAL (U+10349)',
+		    expectKeypress('𐍉', '𐍉'));
+		t2.test('OLD PERSIAN SIGN DI (U+103AE)',
+		    expectKeypress('𐎮', '𐎮'));
+	});
+});
